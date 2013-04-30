@@ -1,1 +1,7 @@
 src/pequerrechos.vala
+src/gui.vala
+src/config.vala
+[type: gettext/glade]data/interface/popup_message.ui
+[type: gettext/glade]data/interface/warning.ui
+[type: gettext/glade]data/interface/settings.ui
+[type: gettext/glade]data/interface/ask_password.ui

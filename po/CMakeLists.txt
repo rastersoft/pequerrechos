@@ -23,4 +23,4 @@ ENDFOREACH()
 
 include (Translations)
 add_translations_directory("pequerrechos")
-add_translations_catalog("pequerrechos" ../src )
+add_translations_catalog("pequerrechos" ../src ../data/interface )

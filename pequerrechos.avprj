@@ -15,7 +15,14 @@ vala_check_package: appindicator3-0.1
 *vala_check_package: gee-1.0
 *vala_check_package: glib-2.0
 *vala_check_package: gtk+-3.0
+*vala_source: gui.vala
 *vala_source: pequerrechos.vala
+*vala_source: config.vala
+
+*glade: data/interface/popup_message.ui
+*glade: data/interface/warning.ui
+*glade: data/interface/settings.ui
+*glade: data/interface/ask_password.ui
 
 *icon: apps data/icons/pequerrechos_fine.svg
 *icon: apps data/icons/pequerrechos_notime.svg

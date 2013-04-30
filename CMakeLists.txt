@@ -32,3 +32,4 @@ pkg_check_modules(DEPS REQUIRED
 add_subdirectory(src)
 add_subdirectory(po)
 add_subdirectory(data/icons)
+add_subdirectory(data/interface)
