@@ -50,13 +50,20 @@ namespace pequerrechos {
 		private string current_icon;
 		private Gtk.MenuItem disable_for_today;
 		private Gtk.MenuItem enable_again;
+		private show_timeout time_msg;
 
 		private configuration config;
 
 		bool lock_menu;
 
+		public signal void updated_time(int v);
+
+		private int last_time;
+
 		public pequerrechos() {
+			this.last_time=0;
 			this.lock_menu=false;
+			this.time_msg=new show_timeout();;
 			this.config=new configuration();
 			days=new Gee.ArrayList<timelist>();
 			this.time_used_today=0;
@@ -72,6 +79,13 @@ namespace pequerrechos {
 			this.launch_child(command,"/");
 		}
 
+		private void set_icon(string icon) {
+			if (this.current_icon!=icon) {
+				this.appindicator.set_icon_full(icon,"Pequerrechos");
+				this.current_icon=icon;
+			}
+		}
+
 		public bool timer_func() {
 			if(this.start_today!=-1) {
 				var current_time=GLib.Time.local(time_t());
@@ -79,10 +93,10 @@ namespace pequerrechos {
 				if (chour<this.start_today) {
 					chour+=1440; // 24 hours * 60 minutes/hour
 				}
+				chour-=this.start_today;
 				if (this.config.disabled) {
 					if (this.current_icon!="pequerrechos_disabled") {
-						this.appindicator.set_icon_full("pequerrechos_disabled","Pequerrechos");
-						this.current_icon="pequerrechos_disabled";
+						this.set_icon("pequerrechos_disabled");
 						this.disable_for_today.hide();
 						this.enable_again.show();
 					}
@@ -98,23 +112,37 @@ namespace pequerrechos {
 					} else {
 						total_time=this.config.time_no_holidays;
 					}
+					GLib.stdout.printf("Tiempo hoy: %d\n",chour);
 					time_left=(total_time>chour) ? (total_time-chour) : 0;
+					updated_time(time_left);
+					bool force=false;
 					if (time_left>10) {
-						if (this.current_icon!="pequerrechos_fine") {
-							this.appindicator.set_icon_full("pequerrechos_fine","Time full");
-							this.current_icon="pequerrechos_fine";
+						this.set_icon("pequerrechos_fine");
+						this.last_time=0;
+					} else if (time_left>5) {
+						if (this.last_time!=10) {
+							this.last_time=10;
+							force=true;
 						}
 					} else if (time_left>2) {
-						if (this.current_icon!="pequerrechos_lesstime") {
-							this.appindicator.set_icon_full("pequerrechos_lesstime","Time less");
-							this.current_icon="pequerrechos_lesstime";
+						if (this.last_time!=5) {
+							this.last_time=5;
+							force=true;
+						}
+						this.set_icon("pequerrechos_lesstime");
+					} else if (time_left>1) {
+						if (this.last_time!=2) {
+							this.last_time=2;
+							force=true;
 						}
 					} else {
-						if (this.current_icon!="pequerrechos_notime") {
-							this.appindicator.set_icon_full("pequerrechos_notime","Time empty");
-							this.current_icon="pequerrechos_notime";
+						if (this.last_time!=1) {
+							this.last_time=1;
+							force=true;
 						}
+						this.set_icon("pequerrechos_notime");
 					}
+					this.time_msg.change_text(time_left,force);
 				}
 			}
 			return true;
@@ -237,6 +265,8 @@ namespace pequerrechos {
 			}
 			this.lock_menu=true;
 			var stg=new show_config(config);
+			this.updated_time.connect(stg.update_time);
+			stg.run();
 			this.lock_menu=false;
 		}
 

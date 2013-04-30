@@ -63,16 +63,66 @@ namespace pequerrechos {
 
 	public class show_message:Object {
 
+		private Gtk.Label text;
+
 		public show_message(string msg) {
 			var builder = new Builder();
 			builder.add_from_file(GLib.Path.build_filename(Constants.PKGDATADIR,"popup_message.ui"));
 			var main_w = (Gtk.Dialog) builder.get_object("dialog1");
-			var text = (Gtk.Label) builder.get_object("text");
-			text.set_text(msg);
+			this.text = (Gtk.Label) builder.get_object("text");
+			this.text.set_text(msg);
 			main_w.show();
 			main_w.run();
 			main_w.hide();
 			main_w.destroy();
+		}
+
+		public void change_text(string msg) {
+			this.text.set_text(msg);
+		}
+	}
+
+	public class show_timeout:Object {
+
+		private Gtk.Label text;
+		private Gtk.Window main_w;
+		public bool visible;
+		private int last_value;
+
+		public show_timeout() {
+			this.last_value=-1;
+			this.visible=false;
+			var builder = new Builder();
+			builder.add_from_file(GLib.Path.build_filename(Constants.PKGDATADIR,"timeout_window.ui"));
+			this.main_w = (Gtk.Window) builder.get_object("window1");
+			this.text = (Gtk.Label) builder.get_object("text");
+			var button = (Gtk.Button) builder.get_object("button1");
+			button.clicked.connect(this.do_hide);
+			this.main_w.delete_event.connect(this.do_delete);
+		}
+
+		public void change_text(int v,bool force) {
+			if (((visible)&&(v!=this.last_value))||(force)) {
+				string msg;
+				msg=_("You have %d minutes left for today").printf(v);
+				this.text.set_text(msg);
+				this.last_value=v;
+			}
+			if (force) {
+				main_w.show();
+				this.visible=true;
+			}
+		}
+
+		public bool do_delete() {
+			main_w.hide();
+			this.visible=false;
+			return true;
+		}
+
+		public void do_hide() {
+			this.visible=false;
+			main_w.hide();
 		}
 	}
 
@@ -91,12 +141,14 @@ namespace pequerrechos {
 		private Gtk.CheckButton saturday;
 		private Gtk.Entry pass1;
 		private Gtk.Entry pass2;
+		private Gtk.Label time_left;
+		private Gtk.Dialog main_w;
 
 		public show_config(configuration config) {
 			this.config=config;
 			this.builder = new Builder();
 			builder.add_from_file(GLib.Path.build_filename(Constants.PKGDATADIR,"settings.ui"));
-			var main_w = (Gtk.Dialog) builder.get_object("settings");
+			this.main_w = (Gtk.Dialog) builder.get_object("settings");
 			this.time_holidays=(Gtk.Adjustment)this.builder.get_object("time_holidays");
 			this.time_no_holidays=(Gtk.Adjustment)this.builder.get_object("time_noholidays");
 			this.sunday=(Gtk.CheckButton)this.builder.get_object("sunday");
@@ -108,11 +160,15 @@ namespace pequerrechos {
 			this.saturday=(Gtk.CheckButton)this.builder.get_object("saturday");
 			this.pass1=(Gtk.Entry)this.builder.get_object("password1");
 			this.pass2=(Gtk.Entry)this.builder.get_object("password2");
+			this.time_left=(Gtk.Label)this.builder.get_object("time_left");
 			this.fill_config();
+		}
+
+		public void run() {
 			do {
-				main_w.show();
-				var retval=main_w.run();
-				main_w.hide();
+				this.main_w.show();
+				var retval=this.main_w.run();
+				this.main_w.hide();
 				if (retval==1) {
 					if (this.pass1.get_text()!=this.pass2.get_text()) { // the passwords don't match
 						var msg=new show_message(_("The passwords don't match. Try again."));
@@ -129,7 +185,7 @@ namespace pequerrechos {
 				}
 				break;
 			} while(true);
-			main_w.destroy();
+			this.main_w.destroy();
 		}
 
 		private void fill_config() {
@@ -161,6 +217,14 @@ namespace pequerrechos {
 				this.config.password=checksum.get_string();
 			}
 			this.config.write_configuration();
+		}
+
+		public void update_time(int v) {
+			int hours;
+			int minutes;
+			hours=v/60;
+			minutes=v%60;
+			this.time_left.set_text("%02d:%02d".printf(hours,minutes));
 		}
 	}
 }

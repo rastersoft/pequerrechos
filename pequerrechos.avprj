@@ -20,6 +20,7 @@ vala_check_package: appindicator3-0.1
 *vala_source: config.vala
 
 *glade: data/interface/popup_message.ui
+*glade: data/interface/timeout_window.ui
 *glade: data/interface/warning.ui
 *glade: data/interface/settings.ui
 *glade: data/interface/ask_password.ui
