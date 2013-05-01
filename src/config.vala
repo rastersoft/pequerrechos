@@ -33,7 +33,10 @@ namespace pequerrechos {
 		public string password;
 		public bool disabled;
 
+		public int extra_time;
+
 		public configuration() {
+			this.extra_time=0;
 			for(int i=1;i<6;i++) {
 				this.holidays[i]=false;
 			}

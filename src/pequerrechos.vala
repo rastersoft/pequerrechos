@@ -50,7 +50,11 @@ namespace pequerrechos {
 		private string current_icon;
 		private Gtk.MenuItem disable_for_today;
 		private Gtk.MenuItem enable_again;
+		private Gtk.MenuItem holiday_today;
+		private Gtk.MenuItem not_holiday_today;
 		private show_timeout time_msg;
+		private lock_w lock_window;
+		private int extra_time;
 
 		private configuration config;
 
@@ -61,10 +65,12 @@ namespace pequerrechos {
 		private int last_time;
 
 		public pequerrechos() {
+			this.extra_time=0;
 			this.last_time=0;
 			this.lock_menu=false;
-			this.time_msg=new show_timeout();;
+			this.time_msg=new show_timeout();
 			this.config=new configuration();
+			this.lock_window=new lock_w(this.config);
 			days=new Gee.ArrayList<timelist>();
 			this.time_used_today=0;
 			this.start_today=-1;
@@ -73,6 +79,13 @@ namespace pequerrechos {
 			this.appindicator = new Indicator("Pequerrechos","pequerrechos_lesstime",IndicatorCategory.APPLICATION_STATUS);
 			this.current_icon="pequerrechos_lesstime";
 			this.set_menu();
+			if(this.today_is_holiday) {
+				this.holiday_today.hide();
+				this.not_holiday_today.show();
+			} else {
+				this.holiday_today.show();
+				this.not_holiday_today.hide();
+			}
 			string[] command={};
 			command+="last";
 			command+=Environment.get_user_name();
@@ -94,28 +107,50 @@ namespace pequerrechos {
 					chour+=1440; // 24 hours * 60 minutes/hour
 				}
 				chour-=this.start_today;
+				int time_left;
+				bool force=false;
 				if (this.config.disabled) {
 					if (this.current_icon!="pequerrechos_disabled") {
 						this.set_icon("pequerrechos_disabled");
 						this.disable_for_today.hide();
 						this.enable_again.show();
 					}
+					time_left=-1;
 				} else {
 					if (this.current_icon=="pequerrechos_disabled") {
 						this.disable_for_today.show();
 						this.enable_again.hide();
 					}
-					int time_left;
 					int total_time;
 					if (this.today_is_holiday) {
-						total_time=this.config.time_holidays;
+						total_time=this.config.time_holidays+this.extra_time;
 					} else {
-						total_time=this.config.time_no_holidays;
+						total_time=this.config.time_no_holidays+this.extra_time;
 					}
-					GLib.stdout.printf("Tiempo hoy: %d\n",chour);
-					time_left=(total_time>chour) ? (total_time-chour) : 0;
+					if(total_time>chour) {
+						time_left=total_time-chour;
+					} else {
+						time_left=0;
+					}
+					if (this.config.extra_time!=0) {
+						if (time_left==0) {
+							this.extra_time+=this.config.extra_time+chour-total_time;
+						} else {
+							this.extra_time+=this.config.extra_time;
+						}
+						this.config.extra_time=0;
+						if (this.today_is_holiday) {
+							total_time=this.config.time_holidays+this.extra_time;
+						} else {
+							total_time=this.config.time_no_holidays+this.extra_time;
+						}
+						if(total_time>chour) {
+							time_left=total_time-chour;
+						} else {
+							time_left=0;
+						}
+					}
 					updated_time(time_left);
-					bool force=false;
 					if (time_left>10) {
 						this.set_icon("pequerrechos_fine");
 						this.last_time=0;
@@ -142,7 +177,13 @@ namespace pequerrechos {
 						}
 						this.set_icon("pequerrechos_notime");
 					}
+				}
+				if (time_left==0) {
+					this.time_msg.do_hide();
+					this.lock_window.show();
+				} else {
 					this.time_msg.change_text(time_left,force);
+					this.lock_window.hide();
 				}
 			}
 			return true;
@@ -158,10 +199,11 @@ namespace pequerrechos {
 			int start=-1;
 			foreach(var l in this.days) {
 				if (l.duration==-1) { // this is "today"
-					today=l.day;
-					month=l.month;
-					start=l.start;
-					break;
+					if ((start==-1)||(start>l.start)) { // take the first one (to avoid problems with several sessions
+						today=l.day;
+						month=l.month;
+						start=l.start;
+					}
 				}
 			}
 			this.time_used_today=0;
@@ -187,6 +229,9 @@ namespace pequerrechos {
 			} catch (ConvertError e) {
 				stdout.printf ("%s: ConvertError: %s\n", stream_name, e.message);
 				return false;
+			}
+			if (stream_name=="stderr") {
+				return true;
 			}
 			string[] parts=line.split(" ");
 			string[] parts2={};
@@ -241,9 +286,13 @@ namespace pequerrechos {
 			menuentry.activate.connect(configure);
 			menuSystem.append(menuentry);
 
-			menuentry = new Gtk.MenuItem.with_label(_("More time"));
-			menuentry.activate.connect(more_time);
-			menuSystem.append(menuentry);
+			this.holiday_today = new Gtk.MenuItem.with_label(_("Make today a holiday"));
+			this.holiday_today.activate.connect(is_holiday_today);
+			menuSystem.append(this.holiday_today);
+
+			this.not_holiday_today = new Gtk.MenuItem.with_label(_("Make today not holiday"));
+			this.not_holiday_today.activate.connect(is_not_holiday_today);
+			menuSystem.append(this.not_holiday_today);
 
 			this.disable_for_today = new Gtk.MenuItem.with_label(_("Disable for today"));
 			this.disable_for_today.activate.connect(disable_today);
@@ -268,10 +317,6 @@ namespace pequerrechos {
 			this.updated_time.connect(stg.update_time);
 			stg.run();
 			this.lock_menu=false;
-		}
-
-		public void more_time() {
-
 		}
 
 		public void disable_today() {
@@ -304,6 +349,41 @@ namespace pequerrechos {
 			this.lock_menu=false;
 		}
 
+		public void is_holiday_today() {
+			if (this.lock_menu) {
+				return;
+			}
+			this.lock_menu=true;
+			var pwd=new ask_password();
+			if (0==pwd.run(this.config.password)) {
+				this.today_is_holiday=true;
+				this.holiday_today.hide();
+				this.not_holiday_today.show();
+			} else {
+				var msg=new show_message(_("Incorrect password"));
+				msg=null;
+			}
+			this.lock_menu=false;
+		}
+
+		public void is_not_holiday_today() {
+			if (this.lock_menu) {
+				return;
+			}
+			this.lock_menu=true;
+			var pwd=new ask_password();
+			if (0==pwd.run(this.config.password)) {
+				this.today_is_holiday=true;
+				this.holiday_today.show();
+				this.not_holiday_today.hide();
+			} else {
+				var msg=new show_message(_("Incorrect password"));
+				msg=null;
+			}
+			this.lock_menu=false;
+		}
+
+
 		private int get_time(string to_parse) {
 			var elements=to_parse.split(":");
 			var hours=int.parse(elements[0]);
@@ -311,7 +391,7 @@ namespace pequerrechos {
 			return (hours*60+minutes);
 		}
 
-		private bool launch_child(string[] parameters,string working_path) {
+		private bool launch_child(string[] parameters,string working_path,bool first=true) {
 			string[] spawn_env = Environ.get ();
 			Pid child_pid;
 
@@ -347,7 +427,15 @@ namespace pequerrechos {
 
 			ChildWatch.add (child_pid, (pid, status) => {
 				// Triggered when the child indicated by child_pid exits
-				this.prepare_data();
+				if (first) {
+					string[] params2={};
+					params2+="last";
+					params2+="-f";
+					params2+="/var/log/wtmp.1"; // take into account logrotate
+					this.launch_child(params2,"/",false);
+				} else {
+					this.prepare_data();
+				}
 				Process.close_pid (pid);
 			});
 			return false;
@@ -356,6 +444,12 @@ namespace pequerrechos {
 }
 
 int main(string[] args) {
+
+	Intl.bindtextdomain(Constants.GETTEXT_PACKAGE, Path.build_filename(Constants.DATADIR,"locale"));
+	Intl.setlocale (LocaleCategory.ALL, "");
+	Intl.textdomain(Constants.GETTEXT_PACKAGE);
+	Intl.bind_textdomain_codeset(Constants.GETTEXT_PACKAGE, "utf-8" );
+
 	Gtk.init(ref args);
 	var clase=new pequerrechos.pequerrechos();
 	clase.start();
