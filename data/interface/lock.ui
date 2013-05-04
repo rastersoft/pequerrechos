@@ -40,7 +40,8 @@
           <object class="GtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Your diary time is over. Please, shutdown the computer and go play outside with your friends.</property>
+            <property name="label" translatable="yes">&lt;span size="x-large"&gt;Your diary time is over. Please, shutdown the computer and go play outside with your friends.&lt;/span&gt;</property>
+            <property name="use_markup">True</property>
             <property name="justify">center</property>
             <property name="wrap">True</property>
           </object>
