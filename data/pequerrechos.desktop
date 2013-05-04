@@ -5,4 +5,5 @@ Exec=pequerrechos
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
-Name=Controls how many time spend your childrens with the computer
+Name=Pequerrechos
+Comment=Controls how many time spend your childrens with the computer
