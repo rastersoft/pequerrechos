@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-01 23:21+0200\n"
-"PO-Revision-Date: 2013-05-04 22:36+0200\n"
+"PO-Revision-Date: 2013-05-04 22:37+0200\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
-"Language: es\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,19 +23,19 @@ msgstr "Configurar"
 
 #: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:289
 msgid "Make today a holiday"
-msgstr "Marcar el día de hoy como de descanso"
+msgstr "Marcar o día de hoxe como de descanso"
 
 #: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:293
 msgid "Make today not holiday"
-msgstr "Marcar el día de hoy como de colegio"
+msgstr "Marcar o día de hoxe como de escola"
 
 #: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:297
 msgid "Disable for today"
-msgstr "Desactivar por hoy"
+msgstr "Desactivar por hoxe"
 
 #: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:301
 msgid "Enable again"
-msgstr "Activar de nuevo"
+msgstr "Activar de novo"
 
 #: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:331
 #: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:346
@@ -43,23 +43,23 @@ msgstr "Activar de nuevo"
 #: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:380
 #: /home/raster/workspace/pequerrechos/po/../src/gui.vala:228
 msgid "Incorrect password"
-msgstr "Contraseña incorrecta"
+msgstr "Contrasinal incorrecto"
 
 #: /home/raster/workspace/pequerrechos/po/../src/gui.vala:83
 msgid "Incorrect password. Try again"
-msgstr "Contraseña incorrecta. Inténtelo de nuevo"
+msgstr "Contrasinal incorrecto. Ténteo de novo"
 
 #: /home/raster/workspace/pequerrechos/po/../src/gui.vala:103
 msgid "Remaining time: %d"
-msgstr "Tiempo restante: %d"
+msgstr "Tempo restante: %d"
 
 #: /home/raster/workspace/pequerrechos/po/../src/gui.vala:155
 msgid "You have %d minutes left for today"
-msgstr "Quedan %d minutos por hoy"
+msgstr "Quedan %d minutos por hoxe"
 
 #: /home/raster/workspace/pequerrechos/po/../src/gui.vala:222
 msgid "The passwords don't match. Try again."
-msgstr "Las contraseñas no coinciden. Inténtelo de nuevo."
+msgstr "Os contrasinais non coinciden. Ténteo de novo."
 
 #: /home/raster/workspace/pequerrechos/po/../src/gui.vala:399
 msgid "System locked for %d seconds"
@@ -77,54 +77,54 @@ msgid ""
 "Insert the management password\n"
 "to apply the changes"
 msgstr ""
-"Escriba la contraseña de gestión para\n"
-"aplicar los cambios"
+"Escriba o contrasinal de xestión para\n"
+"aplicar os cambios"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:43
 msgid "Your diary time is over. Please, shutdown the computer and go play outside with your friends."
 msgstr ""
-"Tu tiempo por hoy se ha acabado. Apaga el ordenador y sal a jugar con tus "
+"Esgotouse o teu tempo por hoxe. Apaga o computador e sal brincar cos teus "
 "amigos."
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:101
 msgid "Shutdown computer"
-msgstr "Apagar el ordenador"
+msgstr "Apagar o computador"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:137
 msgid "Two extra minutes"
-msgstr "Dos minutos extra"
+msgstr "Dous minutos extra"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:151
 msgid "Ten extra minutes"
-msgstr "Diez minutos extra"
+msgstr "Dez minutos extra"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:165
 msgid "Unlock computer"
-msgstr "Desbloquear el ordenador"
+msgstr "Desbloquear o computador"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:185
 msgid "<b>Administrative options</b>"
-msgstr "<b>Opciones administrativas</b>"
+msgstr "<b>Opcións administrativas</b>"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:96
 msgid "<b>Time left for today</b>"
-msgstr "<b>Tiempo restante para hoy</b>"
+msgstr "<b>Tempo restante para hoxe</b>"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:127
 msgid "Time for holidays:"
-msgstr "Tiempo total para días de descanso:"
+msgstr "Tempo total para días de descanso:"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:141
 msgid "Time for non-holidays:"
-msgstr "Tiempo total para días de colegio:"
+msgstr "Tempo total para días de escola:"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:191
 msgid "<b>Time (in minutes)</b>"
-msgstr "<b>Tiempo (en minutos)</b>"
+msgstr "<b>Tempo (en minutos)</b>"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:220
 msgid "Monday"
-msgstr "lunes"
+msgstr "luns"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:236
 msgid "Tuesday"
@@ -132,15 +132,15 @@ msgstr "martes"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:252
 msgid "Wednesday"
-msgstr "miercoles"
+msgstr "mércores"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:268
 msgid "Thursday"
-msgstr "jueves"
+msgstr "xoves"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:284
 msgid "Friday"
-msgstr "viernes"
+msgstr "venres"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:300
 msgid "Saturday"
@@ -156,12 +156,12 @@ msgstr "<b>Días de descanso</b>"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:381
 msgid "New password:"
-msgstr "Nueva contraseña:"
+msgstr "Novo contrasinal:"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:395
 msgid "New password (again):"
-msgstr "Nueva contraseña (otra vez):"
+msgstr "Novo contrasinal (outra vez):"
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:440
 msgid "<b>Change password</b>"
-msgstr "<b>Cambiar la contraseña</b>"
+msgstr "<b>Cambiar o contrasinal</b>"
