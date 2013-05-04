@@ -107,6 +107,7 @@ namespace pequerrechos {
 					chour+=1440; // 24 hours * 60 minutes/hour
 				}
 				chour-=this.start_today;
+				chour+=this.time_used_today;
 				int time_left;
 				bool force=false;
 				if (this.config.disabled) {
