@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-01 23:21+0200\n"
+"POT-Creation-Date: 2013-05-04 23:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,30 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:285
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:115
+msgid "Time left: %02d:%02d"
+msgstr ""
+
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:310
 msgid "Configure"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:289
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:314
 msgid "Make today a holiday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:293
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:318
 msgid "Make today not holiday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:297
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:322
 msgid "Disable for today"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:301
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:326
 msgid "Enable again"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:331
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:346
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:363
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:380
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:356
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:371
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:388
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:405
 #: /home/raster/workspace/pequerrechos/po/../src/gui.vala:228
 msgid "Incorrect password"
 msgstr ""
@@ -66,7 +70,7 @@ msgid "System locked for %d seconds"
 msgstr ""
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/ask_password.ui:9
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:14
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:7
 #: /home/raster/workspace/pequerrechos/po/../data/interface/popup_message.ui:9
 #: /home/raster/workspace/pequerrechos/po/../data/interface/warning.ui:9
 msgid "Pequerrechos"
@@ -80,86 +84,86 @@ msgstr ""
 
 #: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:43
 msgid ""
-"Your diary time is over. Please, shutdown the computer and go play outside "
-"with your friends."
+"<span size=\"x-large\">Your diary time is over. Please, shutdown the "
+"computer and go play outside with your friends.</span>"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:101
+#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:102
 msgid "Shutdown computer"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:137
+#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:138
 msgid "Two extra minutes"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:151
+#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:152
 msgid "Ten extra minutes"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:165
+#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:166
 msgid "Unlock computer"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:185
+#: /home/raster/workspace/pequerrechos/po/../data/interface/lock.ui:186
 msgid "<b>Administrative options</b>"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:96
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:89
 msgid "<b>Time left for today</b>"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:127
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:121
 msgid "Time for holidays:"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:141
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:136
 msgid "Time for non-holidays:"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:191
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:186
 msgid "<b>Time (in minutes)</b>"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:220
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:215
 msgid "Monday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:236
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:231
 msgid "Tuesday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:252
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:247
 msgid "Wednesday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:268
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:263
 msgid "Thursday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:284
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:279
 msgid "Friday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:300
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:295
 msgid "Saturday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:316
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:311
 msgid "Sunday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:350
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:345
 msgid "<b>Holidays</b>"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:381
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:377
 msgid "New password:"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:395
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:392
 msgid "New password (again):"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:440
+#: /home/raster/workspace/pequerrechos/po/../data/interface/settings.ui:437
 msgid "<b>Change password</b>"
 msgstr ""

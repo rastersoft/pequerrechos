@@ -53,9 +53,12 @@ namespace pequerrechos {
 		private Gtk.MenuItem enable_again;
 		private Gtk.MenuItem holiday_today;
 		private Gtk.MenuItem not_holiday_today;
+		private Gtk.MenuItem time_left_entry;
+		private int last_time_left;
 		private show_timeout time_msg;
 		private lock_w lock_window;
 		private int extra_time;
+		private bool use_girl;
 
 		private configuration config;
 
@@ -66,6 +69,16 @@ namespace pequerrechos {
 		private int last_time;
 
 		public pequerrechos() {
+			int time_now=(int)(time_t());
+			GLib.stdout.printf("Tiempo %d %d\n",time_now,time_now%2);
+			if((time_now%2)==0) {
+				print("chico\n");
+				this.use_girl=false;
+			} else {
+				print("chica\n");
+				this.use_girl=true;
+			}
+			this.last_time_left=-1;
 			this.extra_time=0;
 			this.last_time=0;
 			this.lock_menu=false;
@@ -78,7 +91,7 @@ namespace pequerrechos {
 			var current_time=GLib.Time.local(time_t());
 			this.today_is_holiday=config.holidays[current_time.weekday];
 			this.appindicator = new Indicator("Pequerrechos","pequerrechos_lesstime",IndicatorCategory.APPLICATION_STATUS);
-			this.current_icon="pequerrechos_lesstime";
+			this.current_icon="";
 			this.set_menu();
 			if(this.today_is_holiday) {
 				this.holiday_today.hide();
@@ -95,9 +108,29 @@ namespace pequerrechos {
 
 		private void set_icon(string icon) {
 			if (this.current_icon!=icon) {
-				this.appindicator.set_icon_full(icon,"Pequerrechos");
+				string icon2;
+				if (this.use_girl) {
+					icon2=icon+"girl";
+				} else {
+					icon2=icon;
+				}
+				GLib.stdout.printf("Icono: %s\n",icon2);
+				this.appindicator.set_icon_full(icon2,"Pequerrechos");
 				this.current_icon=icon;
 			}
+		}
+
+		private void set_time_left(int time_left) {
+			if (time_left==this.last_time_left) {
+				return;
+			}
+			this.last_time_left=time_left;
+			int hours;
+			int minutes;
+			hours=time_left/60;
+			minutes=time_left%60;
+			this.time_left_entry.set_label(_("Time left: %02d:%02d").printf(hours,minutes));
+			updated_time(time_left);
 		}
 
 		public bool timer_func() {
@@ -152,7 +185,7 @@ namespace pequerrechos {
 							time_left=0;
 						}
 					}
-					updated_time(time_left);
+					set_time_left(time_left);
 					if (time_left>10) {
 						this.set_icon("pequerrechos_fine");
 						this.last_time=0;
@@ -286,6 +319,10 @@ namespace pequerrechos {
 
 			menuDate.sensitive=false;
 			menuSystem.append(menuDate);
+
+			this.time_left_entry = new Gtk.MenuItem.with_label("");
+			this.time_left_entry.sensitive=false;
+			menuSystem.append(this.time_left_entry);
 
 			var menuentry = new Gtk.MenuItem.with_label(_("Configure"));
 			menuentry.activate.connect(configure);

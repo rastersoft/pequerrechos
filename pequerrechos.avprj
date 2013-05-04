@@ -29,6 +29,10 @@ vala_check_package: appindicator3-0.1
 *glade: data/interface/settings.ui
 *glade: data/interface/ask_password.ui
 
+*icon: apps data/icons/pequerrechos_notimegirl.svg
+*icon: apps data/icons/pequerrechos_finegirl.svg
+*icon: apps data/icons/pequerrechos_lesstimegirl.svg
+*icon: apps data/icons/pequerrechos_disabledgirl.svg
 *icon: apps data/icons/pequerrechos_fine.svg
 *icon: apps data/icons/pequerrechos_notime.svg
 *icon: apps data/icons/pequerrechos_lesstime.svg

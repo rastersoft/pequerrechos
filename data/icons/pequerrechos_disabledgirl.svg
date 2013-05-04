@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="410.59836"
+   height="394.22754"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="pequerrechos_lesstime_girl.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.73168726"
+     inkscape:cx="-267.97898"
+     inkscape:cy="228.00992"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="994"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     fit-margin-top="8"
+     fit-margin-left="8"
+     fit-margin-bottom="8"
+     fit-margin-right="8" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-108.37832,-359.96349)">
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:15;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 142.9592,738.69102 67.96793,-278.28498 9.51749,48.94708 35.35067,-33.99103 85.65739,23.1139 19.03498,-29.9121 38.06995,28.55246 -9.51749,-39.42959 51.66636,17.67533 47.58743,260.89304 C 604.4567,242.80079 11.741484,266.96974 142.9592,738.69102 z"
+       id="path3792-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path2996"
+       sodipodi:cx="388.82733"
+       sodipodi:cy="350.5596"
+       sodipodi:rx="183.8217"
+       sodipodi:ry="183.8217"
+       d="m 572.64903,350.5596 c 0,101.52192 -82.29978,183.8217 -183.8217,183.8217 -101.52192,0 -183.8217,-82.29978 -183.8217,-183.8217 0,-101.52192 82.29978,-183.8217 183.8217,-183.8217 101.52192,0 183.8217,82.29978 183.8217,183.8217 z"
+       transform="translate(-74.933296,210.40123)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffe5b7;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path2985"
+       sodipodi:cx="383.41879"
+       sodipodi:cy="342.62955"
+       sodipodi:rx="174.03406"
+       sodipodi:ry="174.03406"
+       d="m 557.45285,342.62955 c 0,96.11635 -77.9177,174.03405 -174.03406,174.03405 -96.11635,0 -174.03405,-77.9177 -174.03405,-174.03405 0,-96.11636 77.9177,-174.03406 174.03405,-174.03406 96.11636,0 174.03406,77.9177 174.03406,174.03406 z"
+       transform="translate(-69.524757,218.33128)" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 142.59337,738.63237 67.96793,-278.28498 9.51749,48.94708 35.35066,-33.99103 85.65739,23.1139 19.03498,-29.9121 38.06995,28.55246 -9.51749,-39.42959 51.66636,17.67533 47.58743,260.89304 C 604.09086,242.74214 11.375644,266.91109 142.59337,738.63237 z"
+       id="path3792"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc" />
+  </g>
+</svg>
