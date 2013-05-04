@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Type=Application
+Exec=pequerrechos
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Controls how many time spend your childrens with the computer
