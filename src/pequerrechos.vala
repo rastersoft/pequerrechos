@@ -240,6 +240,9 @@ namespace pequerrechos {
 					parts2+=l;
 				}
 			}
+			if ((parts2.length<2)||(parts2[1].has_prefix("tty")==false)) {
+				return true;
+			}
 			// search the fields with session duration, start time and day
 			string duration="";
 			string start="";
