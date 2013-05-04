@@ -27,12 +27,12 @@ set (GETTEXT_PACKAGE "pequerrechos")
 set (RELEASE_NAME "pequerrechos")
 set (CMAKE_C_FLAGS "")
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
-set (VERSION "0.1")
+set (VERSION "0.2")
 set (DOLLAR "$")
 
 configure_file (${CMAKE_SOURCE_DIR}/src/Config.vala.cmake ${CMAKE_BINARY_DIR}/src/Config.vala)
 add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
-set (VERSION "0.1")
+set (VERSION "0.2")
 add_definitions(${DEPS_CFLAGS})
 link_libraries( ${DEPS_LIBRARIES} )
 link_directories( ${DEPS_LIBRARY_DIRS} )
@@ -43,6 +43,7 @@ include(ValaPrecompile)
 
 set(VALA_PACKAGES
 	appindicator3-0.1
+	posix
 	gee-1.0
 	glib-2.0
 	gtk+-3.0

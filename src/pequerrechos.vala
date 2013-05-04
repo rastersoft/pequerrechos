@@ -21,6 +21,7 @@ using GLib;
 using Gtk;
 using Gee;
 using AppIndicator;
+using Posix;
 
 // project version=0.2
 
@@ -225,10 +226,10 @@ namespace pequerrechos {
 			try {
 				channel.read_line (out line, null, null);
 			} catch (IOChannelError e) {
-				stdout.printf ("%s: IOChannelError: %s\n", stream_name, e.message);
+				GLib.stdout.printf ("%s: IOChannelError: %s\n", stream_name, e.message);
 				return false;
 			} catch (ConvertError e) {
-				stdout.printf ("%s: ConvertError: %s\n", stream_name, e.message);
+				GLib.stdout.printf ("%s: ConvertError: %s\n", stream_name, e.message);
 				return false;
 			}
 			if (stream_name=="stderr") {
@@ -448,6 +449,8 @@ namespace pequerrechos {
 }
 
 int main(string[] args) {
+
+	Posix.sleep(2); // to avoid problems when using autostart
 
 	Intl.bindtextdomain(Constants.GETTEXT_PACKAGE, Path.build_filename(Constants.DATADIR,"locale"));
 	Intl.setlocale (LocaleCategory.ALL, "");

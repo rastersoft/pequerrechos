@@ -1,6 +1,6 @@
 src/gui.vala
-src/pequerrechos.vala
 src/config.vala
+src/pequerrechos.vala
 [type: gettext/glade]data/interface/popup_message.ui
 [type: gettext/glade]data/interface/timeout_window.ui
 [type: gettext/glade]data/interface/lock.ui

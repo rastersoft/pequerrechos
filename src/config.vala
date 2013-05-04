@@ -22,8 +22,6 @@ using Gtk;
 using Gee;
 using AppIndicator;
 
-// project version=0.1
-
 namespace pequerrechos {
 
 	public class configuration:Object {
