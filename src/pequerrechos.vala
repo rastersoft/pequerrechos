@@ -23,7 +23,7 @@ using Gee;
 using AppIndicator;
 using Posix;
 
-// project version=0.3
+// project version=0.4
 
 namespace pequerrechos {
 
@@ -363,11 +363,14 @@ namespace pequerrechos {
 			}
 			this.lock_menu=true;
 			var pwd=new ask_password();
-			if (0==pwd.run(this.config.password)) {
+			var retval=pwd.run(this.config.password);
+			if (0==retval) {
 				this.config.disabled=true;
 			} else {
-				var msg=new show_message(_("Incorrect password"));
-				msg=null;
+				if (retval!=1) {
+					var msg=new show_message(_("Incorrect password"));
+					msg=null;
+				}
 			}
 			this.lock_menu=false;
 		}
