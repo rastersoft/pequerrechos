@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-04 23:08+0200\n"
-"PO-Revision-Date: 2013-05-04 22:37+0200\n"
+"PO-Revision-Date: 2013-05-05 09:19+0200\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -50,7 +50,7 @@ msgstr "Sistema bloqueado durante %d segundos"
 #: ../src/pequerrechos.vala:115
 #, c-format
 msgid "Time left: %02d:%02d"
-msgstr ""
+msgstr "Tempo restante: %02d:%02d"
 
 #: ../src/pequerrechos.vala:310
 msgid "Configure"
@@ -58,7 +58,7 @@ msgstr "Configurar"
 
 #: ../src/pequerrechos.vala:314
 msgid "Make today a holiday"
-msgstr "Marcar o día de hoxe como de descanso"
+msgstr "Marcar o día de hoxe como de lecer"
 
 #: ../src/pequerrechos.vala:318
 msgid "Make today not holiday"
@@ -83,7 +83,7 @@ msgid ""
 "computer and go play outside with your friends.</span>"
 msgstr ""
 "<span size=\"x-large\">Esgotouse o teu tempo por hoxe. Apaga o computador e "
-"sal brincar cos teus amigos.</span>"
+"vai brincar cos teus amigos.</span>"
 
 #: ../data/interface/lock.ui.h:2
 msgid "Shutdown computer"
@@ -111,7 +111,7 @@ msgstr "<b>Tempo restante para hoxe</b>"
 
 #: ../data/interface/settings.ui.h:3
 msgid "Time for holidays:"
-msgstr "Tempo total para días de descanso:"
+msgstr "Tempo total para días de lecer:"
 
 #: ../data/interface/settings.ui.h:4
 msgid "Time for non-holidays:"
@@ -151,7 +151,7 @@ msgstr "domingo"
 
 #: ../data/interface/settings.ui.h:13
 msgid "<b>Holidays</b>"
-msgstr "<b>Días de descanso</b>"
+msgstr "<b>Días de lecer</b>"
 
 #: ../data/interface/settings.ui.h:14
 msgid "New password:"
@@ -170,5 +170,5 @@ msgid ""
 "Insert the management password\n"
 "to apply the changes"
 msgstr ""
-"Escriba o contrasinal de xestión para\n"
-"aplicar os cambios"
+"Escriba o contrasinal de xestión\n"
+"para aplicar os cambios"
