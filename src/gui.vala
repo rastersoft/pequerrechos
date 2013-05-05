@@ -38,7 +38,7 @@ interface HAL_iface : GLib.Object {
 
 namespace pequerrechos {
 
-	public class ask_password: Object {
+	public class ask_password: GLib.Object {
 
 		private Gtk.Dialog main_w;
 		private Gtk.Builder builder;
@@ -109,7 +109,7 @@ namespace pequerrechos {
 		}
 	}
 
-	public class show_message:Object {
+	public class show_message:GLib.Object {
 
 		private Gtk.Label text;
 
@@ -130,7 +130,7 @@ namespace pequerrechos {
 		}
 	}
 
-	public class show_timeout:Object {
+	public class show_timeout:GLib.Object {
 
 		private Gtk.Label text;
 		private Gtk.Window main_w;
@@ -174,7 +174,7 @@ namespace pequerrechos {
 		}
 	}
 
-	public class show_config:Object {
+	public class show_config:GLib.Object {
 
 		private configuration config;
 		private Builder builder;
@@ -276,7 +276,7 @@ namespace pequerrechos {
 		}
 	}
 
-	class lock_w: Object {
+	class lock_w: GLib.Object {
 
 		private Gtk.Window main_w;
 		private configuration config;

@@ -23,11 +23,11 @@ using Gee;
 using AppIndicator;
 using Posix;
 
-// project version=0.2
+// project version=0.3
 
 namespace pequerrechos {
 
-	class timelist {
+	class timelist : GLib.Object {
 		public string month;
 		public int day;
 		public int duration;
@@ -41,7 +41,7 @@ namespace pequerrechos {
 		}
 	}
 
-	class pequerrechos {
+	class pequerrechos : GLib.Object {
 		private int time_used_today;
 		private int start_today;
 		private Gee.List<timelist> days;
@@ -70,12 +70,9 @@ namespace pequerrechos {
 
 		public pequerrechos() {
 			int time_now=(int)(time_t());
-			GLib.stdout.printf("Tiempo %d %d\n",time_now,time_now%2);
 			if((time_now%2)==0) {
-				print("chico\n");
 				this.use_girl=false;
 			} else {
-				print("chica\n");
 				this.use_girl=true;
 			}
 			this.last_time_left=-1;
@@ -114,13 +111,13 @@ namespace pequerrechos {
 				} else {
 					icon2=icon;
 				}
-				GLib.stdout.printf("Icono: %s\n",icon2);
 				this.appindicator.set_icon_full(icon2,"Pequerrechos");
 				this.current_icon=icon;
 			}
 		}
 
 		private void set_time_left(int time_left) {
+			updated_time(time_left);
 			if (time_left==this.last_time_left) {
 				return;
 			}
@@ -130,7 +127,6 @@ namespace pequerrechos {
 			hours=time_left/60;
 			minutes=time_left%60;
 			this.time_left_entry.set_label(_("Time left: %02d:%02d").printf(hours,minutes));
-			updated_time(time_left);
 		}
 
 		public bool timer_func() {

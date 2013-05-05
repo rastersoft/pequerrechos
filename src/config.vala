@@ -24,7 +24,7 @@ using AppIndicator;
 
 namespace pequerrechos {
 
-	public class configuration:Object {
+	public class configuration:GLib.Object {
 		public bool holidays[7];
 		public int time_holidays;
 		public int time_no_holidays;

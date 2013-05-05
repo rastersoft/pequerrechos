@@ -7,3 +7,5 @@ NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name=Pequerrechos
 Comment=Controls how many time spend your childrens with the computer
+Comment[es]=Controle cuanto tiempo pasan los niños con el ordenador
+Comment[gl]=Controle canto tempo pasan os pícaros co computador
