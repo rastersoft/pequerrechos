@@ -23,7 +23,7 @@ using Gee;
 using AppIndicator;
 using Posix;
 
-// project version=0.4
+// project version=0.99
 
 namespace pequerrechos {
 
@@ -381,11 +381,14 @@ namespace pequerrechos {
 			}
 			this.lock_menu=true;
 			var pwd=new ask_password();
-			if (0==pwd.run(this.config.password)) {
+			var retval=pwd.run(this.config.password);
+			if (0==retval) {
 				this.config.disabled=false;
 			} else {
-				var msg=new show_message(_("Incorrect password"));
-				msg=null;
+				if (retval!=1) {
+					var msg=new show_message(_("Incorrect password"));
+					msg=null;
+				}
 			}
 			this.lock_menu=false;
 		}
@@ -396,13 +399,16 @@ namespace pequerrechos {
 			}
 			this.lock_menu=true;
 			var pwd=new ask_password();
-			if (0==pwd.run(this.config.password)) {
+			var retval=pwd.run(this.config.password);
+			if (0==retval) {
 				this.today_is_holiday=true;
 				this.holiday_today.hide();
 				this.not_holiday_today.show();
 			} else {
-				var msg=new show_message(_("Incorrect password"));
-				msg=null;
+				if (retval!=1) {
+					var msg=new show_message(_("Incorrect password"));
+					msg=null;
+				}
 			}
 			this.lock_menu=false;
 		}
@@ -413,13 +419,16 @@ namespace pequerrechos {
 			}
 			this.lock_menu=true;
 			var pwd=new ask_password();
-			if (0==pwd.run(this.config.password)) {
+			var retval=pwd.run(this.config.password);
+			if (0==retval) {
 				this.today_is_holiday=true;
 				this.holiday_today.show();
 				this.not_holiday_today.hide();
 			} else {
-				var msg=new show_message(_("Incorrect password"));
-				msg=null;
+				if (retval!=1) {
+					var msg=new show_message(_("Incorrect password"));
+					msg=null;
+				}
 			}
 			this.lock_menu=false;
 		}

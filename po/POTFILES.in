@@ -1,5 +1,5 @@
-src/config.vala
 src/pequerrechos.vala
+src/config.vala
 src/gui.vala
 [type: gettext/glade]data/interface/popup_message.ui
 [type: gettext/glade]data/interface/timeout_window.ui
