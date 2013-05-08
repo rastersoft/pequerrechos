@@ -23,7 +23,7 @@ using Gee;
 using AppIndicator;
 using Posix;
 
-// project version=0.99
+// project version=0.99.1
 
 namespace pequerrechos {
 
@@ -99,6 +99,8 @@ namespace pequerrechos {
 			}
 			string[] command={};
 			command+="last";
+			command+="-f";
+			command+="/var/log/wtmp";
 			command+=Environment.get_user_name();
 			this.launch_child(command,"/");
 		}
@@ -138,6 +140,7 @@ namespace pequerrechos {
 				}
 				chour-=this.start_today;
 				chour+=this.time_used_today;
+				GLib.stdout.printf("Time used: %d\n",chour);
 				int time_left;
 				bool force=false;
 				if (this.config.disabled) {
@@ -230,7 +233,8 @@ namespace pequerrechos {
 			int start=-1;
 			foreach(var l in this.days) {
 				if (l.duration==-1) { // this is "today"
-					if ((start==-1)||(start>l.start)) { // take the first one (to avoid problems with several sessions
+					GLib.stdout.printf("Today: %d %s %d\n",l.day,l.month,l.start);
+					if ((start==-1)||(start>l.start)) { // take the first one (to avoid problems with several sessions)
 						today=l.day;
 						month=l.month;
 						start=l.start;
@@ -242,6 +246,10 @@ namespace pequerrechos {
 				if ((l.day==today)&&(l.month==month)&&(l.duration!=-1)) {
 					this.time_used_today+=l.duration;
 				}
+			}
+			if (start==-1) {
+				var now=GLib.Time.local(time_t());
+				start=now.minute+60*now.hour;
 			}
 			this.start_today=start;
 			this.appindicator.set_status(IndicatorStatus.ACTIVE);
@@ -264,6 +272,9 @@ namespace pequerrechos {
 			if (stream_name=="stderr") {
 				return true;
 			}
+			if ((-1==line.index_of("tty")) || (-1!=line.index_of("gone"))) {
+				return true;
+			}
 			string[] parts=line.split(" ");
 			string[] parts2={};
 			foreach(var l in parts) {
@@ -271,7 +282,7 @@ namespace pequerrechos {
 					parts2+=l;
 				}
 			}
-			if ((parts2.length<2)||(parts2[1].has_prefix("tty")==false)) {
+			if (parts2.length<2) {
 				return true;
 			}
 			// search the fields with session duration, start time and day
@@ -482,6 +493,7 @@ namespace pequerrechos {
 					params2+="last";
 					params2+="-f";
 					params2+="/var/log/wtmp.1"; // take into account logrotate
+					params2+=Environment.get_user_name();
 					this.launch_child(params2,"/",false);
 				} else {
 					this.prepare_data();
