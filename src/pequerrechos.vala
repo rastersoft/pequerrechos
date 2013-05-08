@@ -23,7 +23,7 @@ using Gee;
 using AppIndicator;
 using Posix;
 
-// project version=0.99.1
+// project version=0.99.2
 
 namespace pequerrechos {
 

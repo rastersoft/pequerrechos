@@ -224,9 +224,12 @@ namespace pequerrechos {
 						continue;
 					}
 					var pwd=new ask_password();
-					if (0!=pwd.run(this.config.password)) {
-						var msg=new show_message(_("Incorrect password"));
-						msg=null;
+					var retval2=pwd.run(this.config.password);
+					if (0!=retval2) {
+						if (retval2!=1) {
+							var msg=new show_message(_("Incorrect password"));
+							msg=null;
+						}
 						continue;
 					}
 					this.restore_config();
