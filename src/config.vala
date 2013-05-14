@@ -30,10 +30,65 @@ namespace pequerrechos {
 		public int time_no_holidays;
 		public string password;
 		public bool disabled;
+		public GLib.Settings settings;
+		public uint year_data;
+		public uint month_data;
+		public uint day_data;
+		public uint time_data;
+		private uint seconds;
 
 		public int extra_time;
 
+		public void update_time(bool check) {
+			this.seconds++;
+			if((this.seconds>=60)||(check==true)) {
+				this.seconds=0;
+				var ctime=GLib.Time.local(time_t());
+				if ((this.year_data!=(1900+ctime.year))||(this.month_data!=(1+ctime.month))||(this.day_data!=ctime.day)) {
+					this.year_data=ctime.year+1900;
+					this.month_data=ctime.month+1;
+					this.day_data=ctime.day;
+					this.time_data=0;
+					this.settings.set_uint("year-data",this.year_data);
+					this.settings.set_uint("month-data",this.month_data);
+					this.settings.set_uint("day-data",this.day_data);
+				} else {
+					if (check==false) {
+						this.time_data++;
+					}
+				}
+				this.settings.set_uint("time-data",this.time_data);
+			}
+		}
+
 		public configuration() {
+			this.seconds=60;
+			var ctime=GLib.Time.local(time_t());
+			this.settings=new GLib.Settings("apps.pequerrechos");
+			this.time_data=this.settings.get_uint("time-data");
+			this.year_data=this.settings.get_uint("year-data");
+			if (this.year_data==0) {
+				this.year_data=ctime.year+1900;
+				this.settings.set_uint("year-data",this.year_data);
+				this.time_data=0;
+				this.settings.set_uint("time-data",this.time_data);
+			}
+			this.month_data=this.settings.get_uint("month-data");
+			if (this.month_data==0) {
+				this.month_data=ctime.month+1;
+				this.settings.set_uint("month-data",this.month_data);
+				this.time_data=0;
+				this.settings.set_uint("time-data",this.time_data);
+			}
+			this.day_data=this.settings.get_uint("day-data");
+			if(this.day_data==0) {
+				this.day_data=ctime.day;
+				this.settings.set_uint("day-data",this.day_data);
+				this.time_data=0;
+				this.settings.set_uint("time-data",this.time_data);
+			}
+			this.update_time(true);
+			this.settings.changed.connect(this.key_changed);
 			this.extra_time=0;
 			for(int i=1;i<6;i++) {
 				this.holidays[i]=false;
@@ -45,6 +100,35 @@ namespace pequerrechos {
 			this.disabled=false;
 			this.password="b409f0ef3e3bcae3d6e32cd084ccc20a"; // by default, password is "pequerrechos"
 			this.read_configuration();
+		}
+
+		public void key_changed(string key) {
+			switch(key) {
+			case "time-data":
+				uint data=this.settings.get_uint("time-data");
+				if (data!=this.time_data) {
+					this.settings.set_uint("time-data",this.time_data);
+				}
+			break;
+			case "year-data":
+				uint data=this.settings.get_uint("year-data");
+				if (data!=this.year_data) {
+					this.settings.set_uint("year-data",this.year_data);
+				}
+			break;
+			case "month-data":
+				uint data=this.settings.get_uint("month-data");
+				if (data!=this.month_data) {
+					this.settings.set_uint("month-data",this.month_data);
+				}
+			break;
+			case "day-data":
+				uint data=this.settings.get_uint("day-data");
+				if (data!=this.day_data) {
+					this.settings.set_uint("day-data",this.day_data);
+				}
+			break;
+			}
 		}
 
 		private int read_int(FileInputStream stream) {

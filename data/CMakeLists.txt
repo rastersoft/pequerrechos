@@ -22,3 +22,5 @@ FOREACH(element ${AUTOVALA_PATH_LIST})
 ENDFOREACH()
 
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/pequerrechos.desktop DESTINATION ${FINAL_AUTOVALA_PATH}/etc/xdg/autostart/ )
+include(GSettings)
+add_schema(pequerrechos.gschema.xml)

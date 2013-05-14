@@ -135,7 +135,7 @@ namespace pequerrechos {
 		private Gtk.Label text;
 		private Gtk.Window main_w;
 		public bool visible;
-		private int last_value;
+		private uint last_value;
 
 		public show_timeout() {
 			this.last_value=-1;
@@ -149,10 +149,10 @@ namespace pequerrechos {
 			this.main_w.delete_event.connect(this.do_delete);
 		}
 
-		public void change_text(int v,bool force) {
+		public void change_text(uint v,bool force) {
 			if (((visible)&&(v!=this.last_value))||(force)) {
 				string msg;
-				msg=_("You have %d minutes left for today").printf(v);
+				msg=_("You have %u minutes left for today").printf(v);
 				this.text.set_text(msg);
 				this.last_value=v;
 			}
@@ -270,12 +270,12 @@ namespace pequerrechos {
 			this.config.write_configuration();
 		}
 
-		public void update_time(int v) {
-			int hours;
-			int minutes;
+		public void update_time(uint v) {
+			uint hours;
+			uint minutes;
 			hours=v/60;
 			minutes=v%60;
-			this.time_left.set_text("%02d:%02d".printf(hours,minutes));
+			this.time_left.set_text("%02u:%02u".printf(hours,minutes));
 		}
 	}
 

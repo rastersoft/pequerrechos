@@ -22,6 +22,8 @@ vala_check_package: appindicator3-0.1
 
 *autostart: data/pequerrechos.desktop
 
+*scheme: data/pequerrechos.gschema.xml
+
 *glade: data/interface/popup_message.ui
 *glade: data/interface/timeout_window.ui
 *glade: data/interface/lock.ui
