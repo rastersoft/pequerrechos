@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="apps.pequerrechos" path="/apps/pequerrechos/">
+    <key type="u" name="year-data">
+      <default>0</default>
+      <summary>Year</summary>
+      <description>Year</description>
+    </key>
+    <key type="u" name="month-data">
+      <default>0</default>
+      <summary>Year</summary>
+      <description>Year</description>
+    </key>
+    <key type="u" name="day-data">
+      <default>0</default>
+      <summary>Year</summary>
+      <description>Year</description>
+    </key>
+    <key type="u" name="time-data">
+      <default>0</default>
+      <summary>Time</summary>
+      <description>Time</description>
+    </key>
+	<!--<key type="" name="">
+      <default></default>
+      <summary></summary>
+      <description></description>
+    </key> -->
+  </schema>
+</schemalist>
