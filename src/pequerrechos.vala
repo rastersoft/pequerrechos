@@ -219,7 +219,7 @@ namespace pequerrechos {
 			this.not_holiday_today.activate.connect(is_not_holiday_today);
 			menuSystem.append(this.not_holiday_today);
 
-			this.disable_for_today = new Gtk.MenuItem.with_label(_("Disable for today"));
+			this.disable_for_today = new Gtk.MenuItem.with_label(_("Disable for this session"));
 			this.disable_for_today.activate.connect(disable_today);
 			menuSystem.append(this.disable_for_today);
 

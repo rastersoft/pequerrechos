@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-04 23:08+0200\n"
+"POT-Creation-Date: 2013-05-19 21:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:115
-msgid "Time left: %02d:%02d"
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:108
+msgid "Time left: %02u:%02u"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:310
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:210
 msgid "Configure"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:314
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:214
 msgid "Make today a holiday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:318
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:218
 msgid "Make today not holiday"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:322
-msgid "Disable for today"
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:222
+msgid "Disable for this session"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:326
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:226
 msgid "Enable again"
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:356
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:371
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:388
-#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:405
-#: /home/raster/workspace/pequerrechos/po/../src/gui.vala:228
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:259
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:277
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:297
+#: /home/raster/workspace/pequerrechos/po/../src/pequerrechos.vala:317
+#: /home/raster/workspace/pequerrechos/po/../src/gui.vala:230
 msgid "Incorrect password"
 msgstr ""
 
@@ -58,14 +58,14 @@ msgid "Remaining time: %d"
 msgstr ""
 
 #: /home/raster/workspace/pequerrechos/po/../src/gui.vala:155
-msgid "You have %d minutes left for today"
+msgid "You have %u minutes left for today"
 msgstr ""
 
 #: /home/raster/workspace/pequerrechos/po/../src/gui.vala:222
 msgid "The passwords don't match. Try again."
 msgstr ""
 
-#: /home/raster/workspace/pequerrechos/po/../src/gui.vala:399
+#: /home/raster/workspace/pequerrechos/po/../src/gui.vala:402
 msgid "System locked for %d seconds"
 msgstr ""
 
